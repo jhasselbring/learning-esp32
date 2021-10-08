@@ -1,10 +1,15 @@
 #include <heltec.h>
+#include "esp_sleep.h"
 #include "esp32-oled/main.c"
+#include "esp32-time/main.c"
 
 
+#define MYLED 25
+#define SPEED 1000
 
-// Define Oled
+// Define classes
 OLED oled;
+Time t;
 
 void setup()
 {
@@ -16,11 +21,16 @@ void setup()
 
     // Initialize and test oled
     oled.init();
-    oled.echo("Test v0.1.3");
+    oled.echo("Test v0.1.9");
+    oled.echo(String(t.mSeconds(1)));
+
+    pinMode(MYLED, OUTPUT);
+    digitalWrite(MYLED, LOW);
 }
 
 // Used by filler
 int loopCounter = 0;
+
 // Just a filler logic
 void filler()
 {
@@ -30,9 +40,9 @@ void filler()
     loopCounter = loopCounter + 1;
 }
 
-
 void loop()
 {
     filler();
-    delay(1000);
+    digitalWrite(MYLED, !digitalRead(MYLED));
+    delay(t.mSeconds(1));
 }

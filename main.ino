@@ -22,8 +22,8 @@ void setup()
     // Initialize and test oled
     oled.init();
     oled.echo("Test v0.1.9");
-    oled.echo(String(t.mSeconds(1)));
 
+    // Initialize for white LED
     pinMode(MYLED, OUTPUT);
     digitalWrite(MYLED, LOW);
 }
@@ -43,6 +43,8 @@ void filler()
 void loop()
 {
     filler();
+
+    // Toggle LED every cycle
     digitalWrite(MYLED, !digitalRead(MYLED));
-    delay(t.mSeconds(1));
+    delay(t.mSeconds(3));
 }

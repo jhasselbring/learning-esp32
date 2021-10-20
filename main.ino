@@ -4,8 +4,8 @@
 #include <HTTPClient.h>
 
 // Custom wraper libs
-#include "esp32-oled/main.c"
-#include "esp32-time/main.c"
+#include "lib/esp32-oled/main.c"
+#include "lib/esp32-time/main.c"
 
 #define MYLED 25
 
